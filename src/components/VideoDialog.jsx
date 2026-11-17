@@ -1,5 +1,14 @@
 import {useEffect,useRef,useState} from 'react';
 import {formatViews} from '../showcaseData';
+
+const base = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL ? import.meta.env.BASE_URL : '/').replace(/\/$/, '');
+const asset = (p) => {
+  if (!p) return '';
+  if (p.startsWith('http://') || p.startsWith('https://') || p.startsWith('data:')) return p;
+  if (base && p.startsWith(base)) return p;
+  return `${base}${p.startsWith('/') ? p : '/' + p}`;
+};
+
 export default function VideoDialog({clip,onClose,t}){
   const dialog=useRef(),video=useRef();const [failed,setFailed]=useState(false);
   const cm = t?.common;
@@ -12,7 +21,7 @@ export default function VideoDialog({clip,onClose,t}){
   if(!clip)return null;
   return <dialog ref={dialog} className="video-dialog" aria-labelledby="video-title" onCancel={onClose} onClick={e=>{if(e.target===e.currentTarget)onClose();}} data-lenis-prevent>
     <div className="video-dialog-inner"><button className="dialog-close" onClick={onClose} aria-label={cm?.videoDialogClose || 'ปิดวิดีโอ (Esc)'}>✕</button>
-      <video ref={video} key={clip.id} src={clip.src} controls playsInline autoPlay preload="metadata" onError={()=>setFailed(true)} aria-label={clip.title}/>
+      <video ref={video} key={clip.id} src={asset(clip.src)} controls playsInline autoPlay preload="metadata" onError={()=>setFailed(true)} aria-label={clip.title}/>
       <div className="video-detail"><p className="eyebrow">{clip.platform} · {formatViews(clip.views)} {cm?.views || 'วิว'}</p><h2 id="video-title">{clip.title}</h2><p>{cm?.videoDialogSub || 'ผลงานการตัดต่อ เกรดสี และการวาง Pacing โดยทีม Ultra Creator'}</p>{failed&&<p role="alert">{cm?.videoDialogFailed || 'โหลดวิดีโอไม่ได้ กรุณาลองใหม่อีกครั้ง'}</p>}{clip.platformUrl&&<a href={clip.platformUrl} target="_blank" rel="noreferrer">{cm?.watchOn || 'ดูบน'} {clip.platform} ↗</a>}<p className="video-description">{clip.description}</p></div>
     </div>
   </dialog>;

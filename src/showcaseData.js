@@ -1,5 +1,10 @@
 const base = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL ? import.meta.env.BASE_URL : '/').replace(/\/$/, '');
-const asset = (p) => `${base}${p.startsWith('/') ? p : '/' + p}`;
+const asset = (p) => {
+  if (!p) return '';
+  if (p.startsWith('http://') || p.startsWith('https://') || p.startsWith('data:')) return p;
+  if (base && p.startsWith(base)) return p;
+  return `${base}${p.startsWith('/') ? p : '/' + p}`;
+};
 
 // Curated real creator & partner clinic video showcase data
 const johnyClips = [

@@ -290,9 +290,9 @@ html[lang="zh"] .eyebrow {
 .testimonials-section {
   position: relative;
   background: linear-gradient(180deg, #170719 0%, #250f28 35%, #18071a 80%, #0d0210 100%);
-  padding: 150px 0 150px;
+  padding: 140px 0 140px;
   scroll-margin-top: 120px;
-  --testimonial-width: min(440px, 88vw);
+  --testimonial-width: min(370px, 86vw);
 }
 
 .testimonials-heading-wrap {
@@ -341,7 +341,7 @@ html[lang="zh"] .eyebrow {
   border: 1px solid rgba(240, 215, 255, 0.16);
   border-top: 1px solid rgba(240, 215, 255, 0.35);
   border-radius: 26px;
-  padding: 18px 20px 22px;
+  padding: 16px 16px 22px;
   position: relative;
   scroll-snap-align: center;
   filter: brightness(0.5);
@@ -379,7 +379,7 @@ html[lang="zh"] .eyebrow {
 
 .testimonial-video-box {
   position: relative;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 9 / 16;
   width: 100%;
   border-radius: 20px;
   overflow: hidden;
@@ -581,19 +581,19 @@ html[lang="zh"] .eyebrow {
 
 @media (max-width: 768px) {
   .testimonials-section {
-    --testimonial-width: min(340px, 86vw);
-    padding-top: 60px;
-    padding-bottom: 70px;
+    --testimonial-width: min(310px, 84vw);
+    padding-top: 55px;
+    padding-bottom: 65px;
   }
   .testimonial-card {
-    padding: 14px 14px 18px;
+    padding: 12px 12px 16px;
     border-radius: 20px;
   }
   .testimonial-vertical-layout {
     gap: 12px;
   }
   .testimonial-video-box {
-    aspect-ratio: 16 / 11;
+    aspect-ratio: 9 / 16;
     border-radius: 16px;
     max-width: 100%;
   }

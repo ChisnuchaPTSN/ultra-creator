@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const base = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL ? import.meta.env.BASE_URL : '/').replace(/\/$/, '');
-const asset = (p) => `${base}${p.startsWith('/') ? p : '/' + p}`;
+const asset = (p) => {
+  if (!p) return '';
+  if (p.startsWith('http://') || p.startsWith('https://') || p.startsWith('data:')) return p;
+  if (base && p.startsWith(base)) return p;
+  return `${base}${p.startsWith('/') ? p : '/' + p}`;
+};
 
 const testimonials = [
   {
@@ -35,8 +40,8 @@ const testimonials = [
       title: 'รีวิวจากคุณพัชรินทร์ (แบรนด์สกินแคร์)',
       platform: 'TikTok',
       views: 4200000,
-      poster: '/images/forest.jpg',
-      src: '/videos/demo-forest.mp4',
+      poster: '/images/posters/smile-easy.jpg',
+      src: '/videos/creators/smile-easy.mp4',
       description: 'บทสัมภาษณ์ความประทับใจ: การเติบโตของช่อง TikTok จาก 50K สู่ 450K ผู้ติดตาม ด้วยกลยุทธ์คลิปสั้น',
     },
   },
@@ -53,8 +58,8 @@ const testimonials = [
       title: 'รีวิวจากคุณธนกฤต (Tech & Finance)',
       platform: 'Shorts',
       views: 1800000,
-      poster: '/images/ocean.jpg',
-      src: '/videos/demo-nature.mp4',
+      poster: '/images/posters/johny-loss.jpg',
+      src: '/videos/creators/johny-loss.mp4',
       description: 'บทสัมภาษณ์ความประทับใจ: การปรับรูปแบบการเล่าเรื่องในคลิปสั้นเพื่อเข้าถึงกลุ่มคนรุ่นใหม่',
     },
   },
@@ -71,8 +76,8 @@ const testimonials = [
       title: 'รีวิวจากคุณณิชาภัทร (Food & Travel)',
       platform: 'Reels',
       views: 3500000,
-      poster: '/images/desert.jpg',
-      src: '/videos/demo-forest.mp4',
+      poster: '/images/posters/jay-chula.jpg',
+      src: '/videos/creators/jay-chula.mp4',
       description: 'บทสัมภาษณ์ความประทับใจ: เทคนิคการใช้สีและเสียงดนตรีเพื่อยกระดับคลิปอาหารและท่องเที่ยวสู่ระดับพรีเมียม',
     },
   },
@@ -89,8 +94,8 @@ const testimonials = [
       title: 'รีวิวจากคุณศุภกร (Founder & SME)',
       platform: 'TikTok',
       views: 2400000,
-      poster: '/images/ocean.jpg',
-      src: '/videos/demo-nature.mp4',
+      poster: '/images/posters/smilica-root.jpg',
+      src: '/videos/creators/smilica-root.mp4',
       description: 'บทสัมภาษณ์ความประทับใจ: การสร้างตัวตนเจ้าของแบรนด์ให้เข้าถึงใจลูกค้าด้วยคอนเทนต์ที่สม่ำเสมอ',
     },
   },

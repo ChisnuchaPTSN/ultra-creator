@@ -20,7 +20,12 @@ import './showcase.css';
 import './thai.css';
 
 const base = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL ? import.meta.env.BASE_URL : '/').replace(/\/$/, '');
-const asset = (p: string) => `${base}${p.startsWith('/') ? p : '/' + p}`;
+const asset = (p: string) => {
+  if (!p) return '';
+  if (p.startsWith('http://') || p.startsWith('https://') || p.startsWith('data:')) return p;
+  if (base && p.startsWith(base)) return p;
+  return `${base}${p.startsWith('/') ? p : '/' + p}`;
+};
 
 const VIDEO_URL =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260821_114821_a8ca298f-be2c-4613-a4dd-51b69e16bbde.mp4';
