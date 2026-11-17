@@ -1,0 +1,12 @@
+Generated using built-in image_gen tool in one parallel batch (two calls).
+No input reference images. Original generated PNGs copied without modification.
+
+asteroid-basalt-albedo.png
+Source: C:/Users/002-020/.codex/generated_images/01a0e33a-9349-7e52-969e-4637ef2b8aca/exec-2b884ee7-601d-4924-839f-b00791b364a3.png
+Prompt: Use case: stylized-concept. Asset type: square seamless photorealistic albedo texture to map onto a real 3D asteroid. Primary request: crisp angular charcoal basalt rock covering the entire square edge to edge, fine granular pores and irregular fissures with small scattered orange molten glowing veins. Veins are sparse, about 8 percent of the surface. Surface should be predominantly dark grey charcoal rock with convincing detailed mineral structure. Composition: flat orthographic surface texture, seamless tile, matching opposite edges, no single isolated object, no perspective. Lighting: neutral diffuse light, no baked directional shadows or highlights. Constraints: high detail, no rock sphere, no background or empty margins, no text, no UI, no watermark.
+transparent_background: false
+
+meteor-fire-plume.png
+Source: C:/Users/002-020/.codex/generated_images/01a0e33a-9349-7e52-969e-4637ef2b8aca/exec-abac3200-c51d-48f2-8d1c-90ad48d4cc74.png
+Prompt: Use case: stylized-concept. Asset type: transparent realistic VFX fire and ember plume sprite for a meteor traveling LEFT to RIGHT. Primary request: brilliant orange and gold turbulent fire with wispy smoke and scattered glowing embers. Hottest leading tip is on the RIGHT, with a compact white-gold core near the right edge. The plume trails and tapers far to the LEFT in turbulent flame ribbons and wisps of smoke. Composition: wide landscape image, approximately 3:1 ratio. Clearly horizontal left-to-right motion. Bright hottest tip at right and fading narrow trailing wisps at left. Keep full flames inside image, all edges fade naturally to transparent. Style: photorealistic cinematic fire simulation, richly detailed organic fluid turbulence, beautiful vivid orange/gold glow. Constraints: genuine transparent background and alpha, no rectangular background, no black matte, no rock body, no sphere, no text, no UI, no watermark.
+transparent_background: true

@@ -1,0 +1,10 @@
+Earth day texture: NASA Earth Observatory, Blue Marble: Next Generation with Topography, July 2004.
+Produced by Reto Stöckli, NASA Goddard Space Flight Center.
+https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/base-topography/
+https://www.nasa.gov/nasa-brand-center/images-and-media/
+No NASA endorsement is implied.
+
+Earth normal, specular and cloud textures: Three.js example assets.
+https://github.com/mrdoob/three.js/tree/dev/examples/textures/planets
+
+Forest, bird, cloud bank, foliage, basalt and fire plume: generated for this website with OpenAI ImageGen.
