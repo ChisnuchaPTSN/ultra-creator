@@ -144,6 +144,7 @@ html[lang="en"] .creators-heading h2 {
   pointer-events: none;
   z-index: 3;
   opacity: 0.58;
+  border-radius: 50%;
   transform: translateY(16px) rotate(5deg) scale(0.95);
   transition: opacity 0.8s ease, transform 0.95s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease;
   filter: drop-shadow(0 22px 35px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 28px rgba(192, 132, 252, 0.25));
@@ -155,19 +156,11 @@ html[lang="en"] .creators-heading h2 {
   filter: drop-shadow(0 26px 42px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 36px rgba(232, 121, 249, 0.38));
 }
 
-.creator-logo-sticker.sticker-smile {
-  border-radius: 50%;
-}
-
-.creator-logo-sticker.sticker-smile .creator-logo-sticker-inner {
-  border-radius: 50%;
-  border: 2.5px solid rgba(240, 215, 255, 0.65);
-}
-
 .creator-logo-sticker-inner {
   width: 100%;
   height: 100%;
-  border-radius: 30px;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: #ffffff;
   border: 2px solid rgba(240, 215, 255, 0.55);
@@ -182,6 +175,7 @@ html[lang="en"] .creators-heading h2 {
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 50%;
 }
 
 .creator-profile {
@@ -514,10 +508,11 @@ html[lang="en"] .creators-heading h2 {
 .client-logo-tile {
   width: 92px;
   height: 92px;
-  border-radius: 22px;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(240, 215, 255, 0.3);
+  border: 1.5px solid rgba(240, 215, 255, 0.35);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 24px rgba(192, 132, 252, 0.16);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   flex: none;
@@ -534,6 +529,7 @@ html[lang="en"] .creators-heading h2 {
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 50%;
 }
 
 .no-motion .logo-belt {
@@ -704,7 +700,7 @@ html[lang="en"] .creators-heading h2 {
     top: -28px;
   }
   .creator-logo-sticker-inner {
-    border-radius: 22px;
+    border-radius: 50%;
   }
   .creator-profile {
     min-height: 155px;
@@ -740,7 +736,7 @@ html[lang="en"] .creators-heading h2 {
   .client-logo-tile {
     width: 72px;
     height: 72px;
-    border-radius: 17px;
+    border-radius: 50%;
   }
   .shorts-section {
     padding-top: 30px;
