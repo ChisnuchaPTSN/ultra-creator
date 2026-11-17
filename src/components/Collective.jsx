@@ -1,5 +1,8 @@
 import React from 'react';
 
+const base = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL ? import.meta.env.BASE_URL : '/').replace(/\/$/, '');
+const asset = (p) => `${base}${p.startsWith('/') ? p : '/' + p}`;
+
 export default function Collective({ t }) {
   const c = t?.collectiveSec;
   return (
@@ -25,7 +28,7 @@ export default function Collective({ t }) {
           <div className="footer-brand-side">
             <a className="wordmark flex items-center gap-3" href="#home">
               <img
-                src="/brand/uc-logo-white.png"
+                src={asset('/brand/uc-logo-white.png')}
                 alt="Ultra Creator Logo"
                 className="w-8 h-8 object-contain"
               />
@@ -89,7 +92,7 @@ export default function Collective({ t }) {
 
         <div className="footer-meta">
           <span className="inline-flex items-center gap-2">
-            <img src="/brand/uc-logo-white.png" alt="UC" className="w-4 h-4 object-contain opacity-75" />
+            <img src={asset('/brand/uc-logo-white.png')} alt="UC" className="w-4 h-4 object-contain opacity-75" />
             © {new Date().getFullYear()} ULTRA CREATOR
           </span>
           <span>สตูดิโอตัดต่อวิดีโอและวางแผนคอนเทนต์ครบวงจร</span>

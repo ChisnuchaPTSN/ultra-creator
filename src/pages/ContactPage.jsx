@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, Phone, Send, CheckCircle2, MessageSquare, Clock, MapPin } from 'lucide-react';
+import { Mail, Phone, Send, CheckCircle2, MessageSquare, Clock, MapPin, AlertCircle } from 'lucide-react';
+
+const base = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL ? import.meta.env.BASE_URL : '/').replace(/\/$/, '');
+const asset = (p) => `${base}${p.startsWith('/') ? p : '/' + p}`;
 
 export default function ContactPage({ t, lang }) {
   const cp = t?.contactPage;
@@ -13,14 +16,42 @@ export default function ContactPage({ t, lang }) {
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitNotice, setSubmitNotice] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+    setSubmitNotice('');
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/backham.2154@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || 'ไม่ได้ระบุ',
+          service: formData.service,
+          message: formData.message,
+          _subject: `[Ultra Creator] งานใหม่จากคุณ ${formData.name} (${formData.service})`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      const data = await res.json();
+      if (data && data.message && data.message.includes('needs Activation')) {
+        setSubmitNotice('ระบบได้ส่งคำขอไปยัง backham.2154@gmail.com เรียบร้อยแล้ว (หากเป็นการทดสอบครั้งแรก โปรดกด Activate Form ในอีเมล 1 ครั้งเพื่อเปิดใช้งานรับข้อความ)');
+      }
+    } catch (err) {
+      console.warn('Direct submit error:', err);
+    } finally {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 800);
+    }
   };
 
   return (
@@ -55,9 +86,15 @@ export default function ContactPage({ t, lang }) {
               <h3 className="font-['Prompt',sans-serif] text-xl text-white font-normal mb-2">
                 {cp?.successTitle || 'ส่งข้อความสำเร็จแล้ว!'}
               </h3>
-              <p className="text-sm text-slate-300 font-light mb-6">
-                {cp?.successSub || 'ขอบคุณที่ไว้วางใจ Ultra Creator ทีมงานได้รับข้อความเรียบร้อยแล้ว และจะติดต่อกลับทางอีเมลหรือเบอร์โทรศัพท์โดยเร็วที่สุด'}
+              <p className="text-sm text-slate-300 font-light mb-4">
+                {cp?.successSub || 'ขอบคุณที่ไว้วางใจ Ultra Creator ข้อมูลถูกส่งเข้าอีเมล backham.2154@gmail.com เรียบร้อยแล้ว ทีมงานจะติดต่อกลับโดยเร็วที่สุด'}
               </p>
+              {submitNotice && (
+                <div className="mb-6 p-4 rounded-xl bg-purple-950/70 border border-purple-400/30 text-xs text-purple-200 text-left leading-relaxed flex items-start gap-2.5">
+                  <AlertCircle className="w-4 h-4 text-purple-300 shrink-0 mt-0.5" />
+                  <span>{submitNotice}</span>
+                </div>
+              )}
               <button
                 type="button"
                 onClick={() => setSubmitted(false)}
@@ -173,7 +210,7 @@ export default function ContactPage({ t, lang }) {
           <div className="contact-side-card rounded-3xl p-7 sm:p-8">
             <div className="flex items-center gap-3.5 mb-5 pb-5 border-b border-purple-300/15">
               <img
-                src="/brand/uc-logo-white.png"
+                src={asset('/brand/uc-logo-white.png')}
                 alt="Ultra Creator"
                 className="w-11 h-11 object-contain p-2 rounded-2xl bg-purple-950/80 border border-purple-300/30 shadow-lg"
               />

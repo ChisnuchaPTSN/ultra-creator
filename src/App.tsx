@@ -19,6 +19,9 @@ import './styles.css';
 import './showcase.css';
 import './thai.css';
 
+const base = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL ? import.meta.env.BASE_URL : '/').replace(/\/$/, '');
+const asset = (p: string) => `${base}${p.startsWith('/') ? p : '/' + p}`;
+
 const VIDEO_URL =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260821_114821_a8ca298f-be2c-4613-a4dd-51b69e16bbde.mp4';
 
@@ -467,7 +470,7 @@ export default function App() {
             className="flex items-center gap-2.5 font-['Prompt',sans-serif] text-sm sm:text-base font-normal tracking-[0.18em] uppercase text-white hover:opacity-85 transition-opacity cursor-pointer bg-transparent border-0 p-0 mr-4 group"
           >
             <img
-              src="/brand/uc-logo-white.png"
+              src={asset('/brand/uc-logo-white.png')}
               alt="Ultra Creator Logo"
               className="w-6 h-6 sm:w-7 sm:h-7 object-contain group-hover:scale-105 transition-transform"
             />
@@ -535,7 +538,7 @@ export default function App() {
             className="flex items-center gap-2 cursor-pointer bg-transparent border-0 p-0"
           >
             <img
-              src="/brand/uc-logo-white.png"
+              src={asset('/brand/uc-logo-white.png')}
               alt="Ultra Creator Logo"
               className="w-6 h-6 object-contain"
             />
@@ -886,16 +889,16 @@ export default function App() {
             >
               <div className="max-w-2xl text-left drop-shadow-[0_2px_12px_rgba(0,0,0,0.65)]">
                 <Stagger visible={s3Opacity > 0.3} delayMs={0}>
-                  <p
-                    className="text-white/90 text-base sm:text-lg tracking-wider mb-3 font-medium uppercase"
-                    style={{ textShadow: '0 2px 10px rgba(0,0,0,0.9)' }}
-                  >
-                    {t.flythrough.s3Eyebrow}
-                  </p>
+                  <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-purple-500/15 border border-purple-300/30 backdrop-blur-md mb-4 shadow-lg shadow-purple-950/40">
+                    <span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-pulse" />
+                    <p className="text-purple-200 text-xs sm:text-sm tracking-[0.2em] font-medium uppercase">
+                      {t.flythrough.s3Eyebrow}
+                    </p>
+                  </div>
                   <h2
-                    className="font-['Prompt'] font-light text-white leading-[1.25] mb-6 supertext-title"
+                    className="font-['Prompt'] font-light text-white leading-[1.25] mb-8 supertext-title"
                     style={{
-                      fontSize: 'clamp(1.5rem, 3.1vw, 2.6rem)',
+                      fontSize: 'clamp(1.6rem, 3.2vw, 2.8rem)',
                       textShadow: '0 2px 24px rgba(0, 0, 0, 0.95), 0 0 35px rgba(25, 8, 30, 0.9)',
                     }}
                   >
@@ -903,66 +906,42 @@ export default function App() {
                   </h2>
                 </Stagger>
 
-                {/* Open Animated Statistics (No Boxes, with Icons) */}
-                <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 mb-8">
+                {/* Enhanced Statistics Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <Stagger visible={s3Opacity > 0.3} delayMs={100}>
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-purple-500/20 border border-purple-300/30 flex items-center justify-center shrink-0 shadow-lg shadow-purple-950/50">
+                    <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-purple-900/35 via-purple-950/25 to-[#1c0822]/40 border border-purple-300/20 backdrop-blur-xl shadow-2xl shadow-black/60 hover:border-purple-300/40 transition-all duration-300 group">
+                      <div className="w-12 h-12 rounded-2xl bg-purple-500/25 border border-purple-300/30 flex items-center justify-center shrink-0 mb-4 shadow-lg shadow-purple-950/60 group-hover:scale-110 transition-transform">
                         <Eye className="w-6 h-6 text-purple-200" />
                       </div>
-                      <div>
-                        <p className="text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight font-variant-numeric tabular-nums">
-                          <StatCounter target={200000000} suffix="+" active={s3Opacity > 0.3} />
-                        </p>
-                        <p className="text-sm sm:text-base text-purple-200 font-medium mt-1">
-                          {t.flythrough.s3ViewsLabel}
-                        </p>
-                        <p className="text-xs text-purple-200/60 mt-0.5">
-                          {t.flythrough.s3ViewsSub}
-                        </p>
-                      </div>
+                      <p className="text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight font-variant-numeric tabular-nums bg-gradient-to-r from-white via-purple-100 to-fuchsia-200 bg-clip-text text-transparent">
+                        <StatCounter target={200000000} suffix="+" active={s3Opacity > 0.3} />
+                      </p>
+                      <p className="text-sm sm:text-base text-purple-200 font-medium mt-2">
+                        {t.flythrough.s3ViewsLabel}
+                      </p>
+                      <p className="text-xs text-purple-200/60 mt-1 leading-relaxed">
+                        {t.flythrough.s3ViewsSub}
+                      </p>
                     </div>
                   </Stagger>
 
                   <Stagger visible={s3Opacity > 0.3} delayMs={200}>
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-purple-500/20 border border-purple-300/30 flex items-center justify-center shrink-0 shadow-lg shadow-purple-950/50">
+                    <div className="p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-purple-900/35 via-purple-950/25 to-[#1c0822]/40 border border-purple-300/20 backdrop-blur-xl shadow-2xl shadow-black/60 hover:border-purple-300/40 transition-all duration-300 group">
+                      <div className="w-12 h-12 rounded-2xl bg-purple-500/25 border border-purple-300/30 flex items-center justify-center shrink-0 mb-4 shadow-lg shadow-purple-950/60 group-hover:scale-110 transition-transform">
                         <Film className="w-6 h-6 text-purple-200" />
                       </div>
-                      <div>
-                        <p className="text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight font-variant-numeric tabular-nums">
-                          <StatCounter target={2000} suffix="+" active={s3Opacity > 0.3} />
-                        </p>
-                        <p className="text-sm sm:text-base text-purple-200 font-medium mt-1">
-                          {t.flythrough.s3VideosLabel}
-                        </p>
-                        <p className="text-xs text-purple-200/60 mt-0.5">
-                          {t.flythrough.s3VideosSub}
-                        </p>
-                      </div>
+                      <p className="text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight font-variant-numeric tabular-nums bg-gradient-to-r from-white via-purple-100 to-fuchsia-200 bg-clip-text text-transparent">
+                        <StatCounter target={2000} suffix="+" active={s3Opacity > 0.3} />
+                      </p>
+                      <p className="text-sm sm:text-base text-purple-200 font-medium mt-2">
+                        {t.flythrough.s3VideosLabel}
+                      </p>
+                      <p className="text-xs text-purple-200/60 mt-1 leading-relaxed">
+                        {t.flythrough.s3VideosSub}
+                      </p>
                     </div>
                   </Stagger>
                 </div>
-
-                <Stagger visible={s3Opacity > 0.3} delayMs={300}>
-                  <div className="flex items-center gap-4">
-                    <button
-                      type="button"
-                      onClick={(e) => handleNavClick(e, 'contact')}
-                      className="text-sm tracking-[0.15em] text-white font-medium hover:text-white/80 transition-colors cursor-pointer bg-transparent border-0 p-0 text-left"
-                    >
-                      {t.flythrough.s3Cta}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={(e) => handleNavClick(e, 'contact')}
-                      className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#290f2d] hover:scale-110 duration-300 transition-transform cursor-pointer shadow-lg"
-                      aria-label={t.flythrough.s3Cta}
-                    >
-                      <ArrowRight size={16} className="text-[#290f2d]" />
-                    </button>
-                  </div>
-                </Stagger>
               </div>
             </section>
           </div>
@@ -1065,7 +1044,7 @@ export default function App() {
               </button>
 
               {/* Compact Horizontal Scrolling Logo Showcase Section (Item 1) */}
-              <div className="mt-8 sm:mt-10 w-full max-w-2xl sm:max-w-3xl px-2">
+              <div className="mt-8 sm:mt-10 w-full max-w-[450px] mx-auto px-2">
                 <p className="text-[10px] sm:text-xs tracking-[0.25em] uppercase text-purple-200/60 mb-3 font-medium text-center">
                   {t.hero.trustedBrands}
                 </p>
@@ -1128,7 +1107,7 @@ export default function App() {
           <div className="flex items-center justify-between px-6 sm:px-8 pt-8 sm:pt-12">
             <div className="flex items-center gap-3">
               <img
-                src="/brand/uc-logo-white.png"
+                src={asset('/brand/uc-logo-white.png')}
                 alt="Ultra Creator"
                 className="w-8 h-8 object-contain"
               />

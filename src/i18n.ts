@@ -128,6 +128,24 @@ export const translations = {
       nextLabel: 'รีวิวถัดไป',
       items: [
         {
+          id: 'test-sol',
+          name: 'ทีมผู้บริหาร SOL Dental Studio',
+          role: 'คลินิกทันตกรรม & สุขภาพความงาม',
+          channel: 'Dental & Healthcare Brand · Verified Partner',
+          metric: 'Content ลงสม่ำเสมอทุกวัน',
+          stat: 'Reach & ลูกค้าใหม่โตจริง',
+          quote: '“หลังจากร่วมงานกับ Ultra Creator พอเรามี Content ลงอย่างต่อเนื่องทุกวัน คนไข้และลูกค้าเห็นช่องเยอะขึ้นชัดเจน ผลลัพธ์โตขึ้นจริง และที่สำคัญคือราคาสมเหตุสมผล คุ้มค่ามากครับ”',
+          clip: {
+            id: 'testimonial-sol',
+            title: 'รีวิวความประทับใจจาก SOL Dental Studio',
+            platform: 'TikTok & Reels',
+            views: 1850000,
+            poster: '/images/posters/testimonial-tc1.jpg',
+            src: '/videos/testimonials/tc1.mp4',
+            description: 'บทสัมภาษณ์ความประทับใจจริง: ความสำคัญของคอนเทนต์ที่สม่ำเสมอต่อการเติบโตและการเข้าถึงคนไข้ใหม่ของคลินิก โดยทีม Ultra Creator',
+          },
+        },
+        {
           id: 'test-1',
           name: 'คุณพัชรินทร์ (May)',
           role: 'เจ้าของแบรนด์สกินแคร์ & Lifestyle Creator',
@@ -400,6 +418,24 @@ export const translations = {
       nextLabel: 'Next review',
       items: [
         {
+          id: 'test-sol',
+          name: 'Executive Team, SOL Dental Studio',
+          role: 'Premier Dental & Healthcare Clinic',
+          channel: 'Dental & Healthcare Brand · Verified Partner',
+          metric: 'Consistent Daily Video Releases',
+          stat: 'Substantial Reach Growth',
+          quote: '“Since partnering with Ultra Creator for daily video content, our patient and client reach has grown noticeably. Real results, consistent delivery, and very reasonable pricing!”',
+          clip: {
+            id: 'testimonial-sol',
+            title: 'Verified Review: SOL Dental Studio',
+            platform: 'TikTok & Reels',
+            views: 1850000,
+            poster: '/images/posters/testimonial-tc1.jpg',
+            src: '/videos/testimonials/tc1.mp4',
+            description: 'Real client interview: How consistent daily short-form video content drives patient reach and authentic trust for medical clinics.',
+          },
+        },
+        {
           id: 'test-1',
           name: 'Patcharin (May)',
           role: 'Skincare Brand Founder & Lifestyle Creator',
@@ -671,6 +707,24 @@ export const translations = {
       prevLabel: '上一条评价',
       nextLabel: '下一条评价',
       items: [
+        {
+          id: 'test-sol',
+          name: 'SOL Dental Studio 管理团队',
+          role: '知名口腔医疗与美学机构',
+          channel: '专业医疗机构 · 官方认证合作',
+          metric: '每日稳定高质量内容更新',
+          stat: '精准触达与咨询量稳步攀升',
+          quote: '“自从与 Ultra Creator 合作并保持每日内容更新后，患者和客户对我们机构的关注度明显暴增，效果实实在在，且制作收费非常合理公道！”',
+          clip: {
+            id: 'testimonial-sol',
+            title: 'SOL Dental Studio 客户真实专访实录',
+            platform: 'TikTok & 社交媒体',
+            views: 1850000,
+            poster: '/images/posters/testimonial-tc1.jpg',
+            src: '/videos/testimonials/tc1.mp4',
+            description: '真实合作专访：每日稳定短视频产出如何助力医疗门诊建立权威信任并持续获客。',
+          },
+        },
         {
           id: 'test-1',
           name: 'May 女士',

@@ -1,6 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+const base = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL ? import.meta.env.BASE_URL : '/').replace(/\/$/, '');
+const asset = (p) => `${base}${p.startsWith('/') ? p : '/' + p}`;
+
 const testimonials = [
+  {
+    id: 'test-sol',
+    name: 'ทีมผู้บริหาร SOL Dental Studio',
+    role: 'คลินิกทันตกรรม & สุขภาพความงาม',
+    channel: 'Dental & Healthcare Brand · Verified Partner',
+    metric: 'Content ลงสม่ำเสมอทุกวัน',
+    stat: 'Reach & ลูกค้าใหม่โตจริง',
+    quote: '“หลังจากร่วมงานกับ Ultra Creator พอเรามี Content ลงอย่างต่อเนื่องทุกวัน คนไข้และลูกค้าเห็นช่องเยอะขึ้นชัดเจน ผลลัพธ์โตขึ้นจริง และที่สำคัญคือราคาสมเหตุสมผล คุ้มค่ามากครับ”',
+    clip: {
+      id: 'testimonial-sol',
+      title: 'รีวิวความประทับใจจาก SOL Dental Studio',
+      platform: 'TikTok & Reels',
+      views: 1850000,
+      poster: '/images/posters/testimonial-tc1.jpg',
+      src: '/videos/testimonials/tc1.mp4',
+      description: 'บทสัมภาษณ์ความประทับใจจริง: ความสำคัญของคอนเทนต์ที่สม่ำเสมอต่อการเติบโตและการเข้าถึงคนไข้ใหม่ของคลินิก โดยทีม Ultra Creator',
+    },
+  },
   {
     id: 'test-1',
     name: 'คุณพัชรินทร์ (May)',
@@ -163,21 +184,26 @@ export default function Work({ onSelect, onOpen, motion = true, t }) {
   };
 
   const handleVideoClick = (item) => {
+    const fullClip = {
+      ...item.clip,
+      poster: asset(item.clip.poster),
+      src: asset(item.clip.src),
+    };
     if (onOpen) {
-      onOpen(item.clip);
+      onOpen(fullClip);
     } else if (onSelect) {
       onSelect({
         id: item.clip.id,
         title: item.name,
         category: item.role,
         year: '2026',
-        image: item.clip.poster,
+        image: asset(item.clip.poster),
         alt: item.name,
         description: item.quote,
         services: [item.metric, item.stat],
         treatment: item.clip.description,
         credit: item.name,
-        source: item.clip.src,
+        source: asset(item.clip.src),
       });
     }
   };
@@ -236,7 +262,7 @@ export default function Work({ onSelect, onOpen, motion = true, t }) {
                 >
                   <div className="testimonial-video-box">
                     <img
-                      src={item.clip.poster}
+                      src={asset(item.clip.poster)}
                       alt={item.name}
                       className="testimonial-video-poster"
                       loading="lazy"
