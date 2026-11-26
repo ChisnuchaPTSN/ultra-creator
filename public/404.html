@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra Creator | หน้าไม่พบ (404 Not Found)</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        background: #0d0210;
+        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Prompt", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 24px;
+        overflow: hidden;
+      }
+      .bg-glow {
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(192, 132, 252, 0.25) 0%, transparent 70%);
+        pointer-events: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .container {
+        position: relative;
+        z-index: 10;
+        max-width: 480px;
+      }
+      .logo {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 24px;
+        display: block;
+        filter: drop-shadow(0 0 20px rgba(232, 121, 249, 0.6));
+      }
+      h1 {
+        font-size: 72px;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        background: linear-gradient(135deg, #ffffff 0%, #e879f9 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 8px;
+      }
+      h2 {
+        font-size: 20px;
+        font-weight: 500;
+        color: #f5d0fe;
+        margin-bottom: 12px;
+      }
+      p {
+        font-size: 14px;
+        color: #a89bb5;
+        line-height: 1.6;
+        margin-bottom: 28px;
+      }
+      a.btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 28px;
+        border-radius: 9999px;
+        background: linear-gradient(135deg, #9333ea 0%, #c084fc 100%);
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        box-shadow: 0 10px 25px -5px rgba(168, 85, 247, 0.5);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      a.btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px -5px rgba(168, 85, 247, 0.7);
+      }
+    </style>
+    <!-- Single Page Apps for GitHub Pages redirect script -->
+    <script>
+      (function() {
+        // Set pathSegmentsToKeep to 1 if hosted on GitHub Pages subfolder (e.g. /ultra-creator/)
+        // or 0 if hosted on custom root domain (e.g. ultracreator.com)
+        var path = window.location.pathname;
+        var isSubdir = path.indexOf('/ultra-creator') === 0;
+        var pathSegmentsToKeep = isSubdir ? 1 : 0;
+
+        var l = window.location;
+        var newUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+          l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash;
+        
+        // Only redirect if pathname was not just the root/project root
+        var targetPath = l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/');
+        if (targetPath.length > 0) {
+          l.replace(newUrl);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="bg-glow"></div>
+    <div class="container">
+      <img src="brand/uc-icon.png" alt="Ultra Creator" class="logo" />
+      <h1>404</h1>
+      <h2>ไม่พบหน้าที่คุณกำลังค้นหา</h2>
+      <p>หน้าที่คุณเรียกอาจถูกย้าย หรือที่อยู่ลิงก์ไม่ถูกต้อง กำลังนำคุณกลับสู่ประสบการณ์หลักของ Ultra Creator...</p>
+      <a href="./" class="btn">กลับสู่หน้าแรก ↗</a>
+    </div>
+  </body>
+</html>

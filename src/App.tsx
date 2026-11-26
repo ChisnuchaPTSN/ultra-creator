@@ -10,6 +10,7 @@ import Collective from './components/Collective';
 import ProjectDialog from './components/ProjectDialog';
 import VideoDialog from './components/VideoDialog';
 import FireflyCursor from './components/FireflyCursor';
+import Preloader from './components/Preloader';
 import ServicesPage from './pages/ServicesPage';
 import ArticlesPage from './pages/ArticlesPage';
 import ContactPage from './pages/ContactPage';
@@ -187,6 +188,8 @@ export default function App() {
     };
   }, [langMenuOpen]);
 
+  const [isSiteLoaded, setIsSiteLoaded] = useState(false);
+
   const [currentPage, setCurrentPage] = useState<PageType>(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
@@ -194,6 +197,8 @@ export default function App() {
       if (p === 'services' || p === 'articles' || p === 'contact') return p;
       const hash = window.location.hash.replace(/^#/, '');
       if (hash === 'services' || hash === 'articles' || hash === 'contact') return hash as any;
+      const path = window.location.pathname.replace(/\/$/, '').split('/').pop();
+      if (path === 'services' || path === 'articles' || path === 'contact') return path as any;
     }
     return 'home';
   });
@@ -202,7 +207,8 @@ export default function App() {
     setCurrentPage(page);
     setMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    const newUrl = page === 'home' ? '/' : `/?page=${page}`;
+    const b = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+    const newUrl = page === 'home' ? (b ? `${b}/` : '/') : (b ? `${b}/?page=${page}` : `/?page=${page}`);
     window.history.pushState({ page }, '', newUrl);
   };
 
@@ -213,8 +219,11 @@ export default function App() {
       } else {
         const params = new URLSearchParams(window.location.search);
         const p = params.get('page');
+        const path = window.location.pathname.replace(/\/$/, '').split('/').pop();
         if (p === 'services' || p === 'articles' || p === 'contact') {
           setCurrentPage(p);
+        } else if (path === 'services' || path === 'articles' || path === 'contact') {
+          setCurrentPage(path as any);
         } else {
           setCurrentPage('home');
         }
@@ -250,6 +259,16 @@ export default function App() {
     mediaQuery.addEventListener?.('change', sync);
     return () => mediaQuery.removeEventListener?.('change', sync);
   }, []);
+
+  // When preloader finishes, play intro video if motion is enabled
+  useEffect(() => {
+    if (isSiteLoaded && motion) {
+      const video = introVideoRef.current;
+      if (video) {
+        video.play().catch(() => {});
+      }
+    }
+  }, [isSiteLoaded, motion]);
 
   // Entrance animation for nav links after 200ms
   useEffect(() => {
@@ -1261,6 +1280,9 @@ export default function App() {
 
       {/* ATMOSPHERIC PARTICLE CURSOR */}
       <FireflyCursor enabled={motion && !project && !clip} />
+
+      {/* CINEMATIC PRELOADER SCREEN */}
+      <Preloader onComplete={() => setIsSiteLoaded(true)} lang={lang} />
     </div>
   );
 }
